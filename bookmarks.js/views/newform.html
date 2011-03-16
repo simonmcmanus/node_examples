@@ -1,0 +1,20 @@
+<style>
+label {
+	background:red;
+	display:block;
+	width:400px;
+}
+</style>
+
+
+
+
+<h1>New Bookmark</h1>
+
+<form action='/new' method='post'>
+	<label for="url">title:<input name='url' id='title'  value="Google"/></label>
+	<label for="url">url:<input name='url' id='url'  value="google.com"/></label>
+	<label for="description">description:<textarea  name='description' id='description' >Search engine</textarea></label>
+	<label for='tags'>tags:<input  name='tags' id='tags' value="search evil"/></label>
+	<input type='submit' />
+</form>
