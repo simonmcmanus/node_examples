@@ -1,20 +1,52 @@
 <style>
-label {
-	background:red;
-	display:block;
-	width:400px;
+
+body {
+ 	background:#bbb;
 }
+
+form {
+	background:#fff;
+	width:50%;
+	border:1px solid #ddd;
+	padding:1em;
+	margin:5em;
+}
+label {
+	padding-right:0.5em;
+	vertical-align:top;
+	text-align:right;
+	width:200px;
+	display:inline-block;
+}
+
+p {
+	background:#eee;
+	padding:0.5em;
+	margin:0.5em;
+}
+
+input, textarea {
+	padding:0.5em;
+	font-size:1.2em;
+	margin:0.5em;
+}
+
+textarea {
+	width:100%;
+}
+
+input[type=submit] {
+	width:80%;
+	font-size:3em;
+}
+
 </style>
 
-
-
-
-<h1>New Bookmark</h1>
-
-<form action='/new' method='post'>
-	<label for="url">title:<input name='url' id='title'  value="Google"/></label>
-	<label for="url">url:<input name='url' id='url'  value="google.com"/></label>
-	<label for="description">description:<textarea  name='description' id='description' >Search engine</textarea></label>
-	<label for='tags'>tags:<input  name='tags' id='tags' value="search evil"/></label>
+<form action='/bookmarks/new' method='post'>
+	<h1>New Bookmark</h1>
+	<p><label for="title">title:</label><input placeholder='title' name='title' id='title' /></p>
+	<p><label for="url">url:</label><input name='url' id='url'  placeholder="url"/></p>
+	<!--<p><label for="description">description:</label><textarea  name='description' id='description' >Search engine</textarea></p>-->
+	<p><label for='tags'>tags:</label><input  name='tags' id='tags' value="search evil"/></p>
 	<input type='submit' />
 </form>
