@@ -1,12 +1,8 @@
 <style>
 
-body {
- 	background:#bbb;
-}
 
 form {
 	background:#fff;
-	width:50%;
 	border:1px solid #ddd;
 	padding:1em;
 	margin:5em;
@@ -43,10 +39,9 @@ input[type=submit] {
 </style>
 
 <form action='/bookmarks/new' method='post'>
-	<h1>New Bookmark</h1>
 	<p><label for="title">title:</label><input placeholder='title' name='title' id='title' /></p>
 	<p><label for="url">url:</label><input name='url' id='url'  placeholder="url"/></p>
-	<!--<p><label for="description">description:</label><textarea  name='description' id='description' >Search engine</textarea></p>-->
-	<p><label for='tags'>tags:</label><input  name='tags' id='tags' value="search evil"/></p>
+	<p><label for="description">description:</label><textarea  name='description' id='description' >Search engine</textarea></p>
+	<p><label for='tags'>tags:</label><input  name='tags' id='tags' value="search"/></p>
 	<input type='submit' />
 </form>

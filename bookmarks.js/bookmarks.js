@@ -64,18 +64,17 @@ exports.getBookmarks = function(callback) {
 	});
 };
 
-exports.doSearch = function(term) {
+exports.doSearch = function(term, callback) {
+	console.log('TERM', term);
 	process.chdir(__dirname);
 	var util   = require('util'),
 	spawn = require('child_process').spawn;
-	var ls = spawn( 'grep', ['-r', 'a ','bookmarks' ] );
+	var ls = spawn( 'grep', ['-r', term,'bookmarks' ] );
 	ls.stdout.on('data', function (data) {
-		var str = ""+data;
-	  	console.log(str);
-//		console.log(typeof data);
-//		for(item in data){
-//			console.log(item);
-//		}
+		var str = data+"";
+	  	callback(str.split('\n'));
+	
+	
 	});
 
 	ls.stderr.on('data', function (data) {

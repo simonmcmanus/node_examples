@@ -33,7 +33,19 @@ app.get(ns+'new', function(req, res){
 
 
 app.get(ns+'search/:s', function(req, res){
-	bookmarks.doSearch(req.params.s);
+	var processSearchResults = function(data) {
+		console.log(data);
+		
+		bookmarks.getBookmarks(function(out) {
+			res.render('list.html', {
+				locals:{
+					items: data
+				}
+			});
+		});
+		
+	}
+	bookmarks.doSearch(req.params.s, processSearchResults);
 });
 
 app.get(ns+':id', function(req, res){
