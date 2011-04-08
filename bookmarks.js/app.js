@@ -10,17 +10,16 @@ app.register('.html', jqtpl);
 // namespace
 var ns = "/bookmarks/";
 
-
 // allow forms to be posted
 app.use(express.bodyParser());
 
 app.get(ns, function(req, res){
-		bookmarks.getBookmarks(function(out) {
-			res.render('list.html', {
-				locals:{
-					items: out
-				}
-			});
+	bookmarks.getBookmarks(function(out) {
+		res.render('list.html', {
+			locals:{
+				items: out
+			}
+		});
 	});
 });
 

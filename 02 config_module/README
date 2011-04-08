@@ -1,0 +1,3 @@
+Demonstrates how to include a config files with node.js.
+
+Note the exports object which is always available when a module is included via require('');

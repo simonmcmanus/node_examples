@@ -64,23 +64,18 @@ exports.getBookmarks = function(callback) {
 	});
 };
 
-
-
-
-
-
-
 exports.doSearch = function(term) {
-	
 	process.chdir(__dirname);
 	var util   = require('util'),
-	    spawn = require('child_process').spawn;
-	var ls = spawn( 'grep', ['a ','./bookmarks/' ] );
-//	var ls = spawn( 'pwd');
-//	var ls = spawn( 'ls', ['./bookmarks/*.html']);
-
+	spawn = require('child_process').spawn;
+	var ls = spawn( 'grep', ['-r', 'a ','bookmarks' ] );
 	ls.stdout.on('data', function (data) {
-	  console.log('stdout: ' + data);
+		var str = ""+data;
+	  	console.log(str);
+//		console.log(typeof data);
+//		for(item in data){
+//			console.log(item);
+//		}
 	});
 
 	ls.stderr.on('data', function (data) {
@@ -91,6 +86,5 @@ exports.doSearch = function(term) {
 	  console.log('child process exited with code ' + code);
 	});
 
-	console.log(term);
 
 };
