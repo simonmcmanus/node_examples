@@ -72,6 +72,7 @@ exports.doSearch = function(term, callback) {
 	var ls = spawn( 'grep', ['-r', term,'bookmarks' ] );
 	ls.stdout.on('data', function (data) {
 		var str = data+"";
+		console.log(str);
 	  	callback(str.split('\n'));
 	
 	

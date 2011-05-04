@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<script>
+var url = "";
+
+//document.body.appendChild(frames[0].document.body); 
+
+
+chrome.tabs.getSelected(null, function(tab) {
+	var url = tab.url;
+document.getElementById('name').value = url;	
+//alert(document.getElementById('frameForm').contents	)
+alert(window.frames[0].document.getElementById('url'));
+console.log('sd');
+
+//window.frames[1].contentWindow.getElementById('url').value = 'BOGOFF';
+	alert(2);
+})
+
+
+chrome.extension.sendRequest(pageInfo);
+</script>
+
+<!--
+<style>
+body {
+	height:450px;
+	width:500px;
+	overflow:hidden;
+	background:#eee;
+}
+iframe {
+	border:0;
+}
+</style>
+<html>
+    <head>
+        <style>
+            body 
+            { 
+                min-width: 420px; 
+                overflow-x: hidden; 
+                font-family: Arial, sans-serif; 
+                font-size: 12px; 
+            }
+            input, textarea { width: 420px; }
+            input#save { font-weight: bold; width: auto; }
+        </style>
+        <script>
+            // This callback function is called when the content script has been 
+            // injected and returned its results
+            function onPageInfo(o) 
+            { 
+                document.getElementById("title").value = o.title; 
+                document.getElementById("url").value = o.url; 
+alert(o.url);
+                document.getElementById("summary").innerText = o.summary; 
+            } 
+  
+
+            // Call the getPageInfo function in the background page, passing in 
+            // our onPageInfo function as the callback
+            window.onload = function() 
+            { 
+                var bg = chrome.extension.getBackgroundPage();
+                bg.getPageInfo(onPageInfo);
+getPageInfo
+            }
+        </script>
+    </head>
+    <body>
+<iframe src='http://127.0.0.1:3000/bookmarks/new/' height="450px" width="500px">
+	    </body>
+</html>
+
+-->
+
+<input id="name"/>
+<iframe src='http://127.0.0.1:3000/bookmarks/new/' id="frameForm" name="frameForm" height="450px" width="500px">
+</html>

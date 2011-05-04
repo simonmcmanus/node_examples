@@ -1,46 +1,43 @@
 <style>
 
 
-form {
+form.new {
 	background:#fff;
 	border:1px solid #ddd;
 	padding:1em;
-	margin:5em;
+	margin:1em;
+	border-bottom:1px solid red;
 }
 label {
 	padding-right:0.5em;
 	vertical-align:top;
 	text-align:right;
-	width:200px;
+	font-size:1.4em;
+	width:100px;
 	display:inline-block;
+	line-height:1.7em;
 }
 
 p {
-	background:#eee;
+	background:#f9f9f9;
+}
+
+form.new input, textarea {
 	padding:0.5em;
 	margin:0.5em;
 }
 
-input, textarea {
-	padding:0.5em;
-	font-size:1.2em;
-	margin:0.5em;
+form.new textarea {
+	width:60%;
+	height:30%;
 }
 
-textarea {
-	width:100%;
-}
-
-input[type=submit] {
-	width:80%;
-	font-size:3em;
-}
 
 </style>
 
-<form action='/bookmarks/new' method='post'>
-	<p><label for="title">title:</label><input placeholder='title' name='title' id='title' /></p>
-	<p><label for="url">url:</label><input name='url' id='url'  placeholder="url"/></p>
+<form action='/bookmarks/new' method='post' class="new">
+	<p><label for="title">title:</label><input placeholder='title' name='title' id='title'  size="40"/></p>
+	<p><label for="url">url:</label><input name='url' id='url'  placeholder="url" value="http://" size="40" /></p>
 	<p><label for="description">description:</label><textarea  name='description' id='description' >Search engine</textarea></p>
 	<p><label for='tags'>tags:</label><input  name='tags' id='tags' value="search"/></p>
 	<input type='submit' />

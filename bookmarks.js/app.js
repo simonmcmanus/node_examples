@@ -1,58 +1,58 @@
 
-var express = require('express');
+/*****************************
+	Node Dependencies
+*****************************/
+
+var express = require( 'express' );
 var app = express.createServer();
-var bookmarks = require('./bookmarks.js');
-var jqtpl = require('jqtpl'); //jquery templating
+var bookmarks = require( './bookmarks.js' );
+var jqtpl = require( 'jqtpl' ); //jquery templating
+
 
 //register  jquery templating to render html files 
-app.register('.html', jqtpl);
+app.register( '.html', jqtpl );
 
 // namespace
 var ns = "/bookmarks/";
 
 // allow forms to be posted
-app.use(express.bodyParser());
+app.use( express.bodyParser() );
 
-app.get(ns, function(req, res){
-	bookmarks.getBookmarks(function(out) {
-		res.render('list.html', {
-			locals:{
+app.get( ns, function( req, res ) {
+	
+	bookmarks.getBookmarks( function( out ) {
+		res.render( 'list.html', {
+			locals: {
 				items: out
 			}
 		});
 	});
-});
+} );
 
-app.get(ns+'new', function(req, res){
-	res.render('newform.html', {
+
+app.get( ns + 'search/', function( req, res ){
+	var searchResultsCallback = function( data ) {
+		bookmarks.getBookmarks( function( out ) {
+			res.render( 'list.html', {
+				locals: {
+					items: data
+				}
+			});
+		});
+	}
+	bookmarks.doSearch( req.query.q, searchResultsCallback );
+} );
+
+app.get( ns+'new', function( req, res ){
+	res.render( 'newform.html', {
+		layout:false,
 		locals: {
 			title: 'create new bookmark'
 		}
 	});
 });
 
-
-app.get(ns+'search/:s', function(req, res){
-	var processSearchResults = function(data) {
-		console.log(data);
-		
-		bookmarks.getBookmarks(function(out) {
-			res.render('list.html', {
-				locals:{
-					items: data
-				}
-			});
-		});
-		
-	}
-	bookmarks.doSearch(req.params.s, processSearchResults);
-});
-
-app.get(ns+':id', function(req, res){
-	res.render('../bookmarks/'+req.params.id);
-});
-
-app.post(ns+'new', function( req, res ){
+app.post( ns+'new', function( req, res ){
 	var obj = {
 		title: req.body.title,
 		description: req.body.description,
@@ -67,4 +67,39 @@ app.post(ns+'new', function( req, res ){
 		res.redirect( ns + file );	
 	});
 });
-app.listen(3000);
+
+
+
+app.get( ns+'login', function( req, res ){
+	res.render( 'login.html', {
+		locals: {
+			title: 'create new bookmark'
+		}
+	});
+});
+
+
+app.get( ns+'login', function( req, res ){
+	res.render( 'login.html', {
+		locals: {
+			title: 'create new bookmark'
+		}
+	});
+});
+
+
+
+
+
+app.get( ns+':id', function( req, res ){
+	res.render( '../bookmarks/'+req.params.id );
+});
+
+//download .js/.css/.* files in stuff
+app.get( ns+'static/:file(*)', function( req, res ){
+        var file = req.params.file;
+        var folder = './static/' + file;
+        res.download( folder );
+});
+
+app.listen( 3000 );

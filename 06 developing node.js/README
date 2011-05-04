@@ -1,2 +1,9 @@
 npm install supervisor
 supervisor -p app.js
+
+
+
+
+var log = function(var) {
+	console.log(require('sys').inspect(var));
+}
