@@ -1,8 +1,10 @@
+To avoid having to restart after every change to your serverside javascript install and use supervisor:
+
 npm install supervisor
 supervisor -p app.js
 
 
-
+Here is a log function:
 
 var log = function(var) {
 	console.log(require('sys').inspect(var));

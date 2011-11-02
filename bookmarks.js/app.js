@@ -102,4 +102,6 @@ app.get( ns+'static/:file(*)', function( req, res ){
         res.download( folder );
 });
 
-app.listen( 3000 );
+app.listen( 8000 );
+
+console.log('Server running at http://127.0.0.1:8000/');

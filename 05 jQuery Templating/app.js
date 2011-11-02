@@ -9,7 +9,7 @@ app.set("view engine", "html");
 app.register('.html', jqtpl);
 
 app.get('/', function(req, res) {
-	res.render('template.html', {
+	res.render('wrapper.html', {
 		locals: {
 			title:"Hello WDU!",
 			content : "Love Node"
@@ -18,3 +18,5 @@ app.get('/', function(req, res) {
 });
 
 app.listen('8000');
+
+console.log('Server running at http://127.0.0.1:8000/');
